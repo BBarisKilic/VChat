@@ -1,115 +1,166 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
+import 'package:vchat/constant/app_asset.dart';
+import 'package:vchat/constant/app_color.dart';
+import 'package:vchat/constant/app_hero_tag.dart';
+import 'package:vchat/constant/app_string.dart';
+import 'package:vchat/controller/chat/chat_controller.dart';
+import 'package:vchat/controller/chat/player_controller.dart';
+import 'package:vchat/controller/search/search_controller.dart';
+import 'package:vchat/controller/home/chat_list_controller.dart';
+import 'package:vchat/core/controller/authenticate/login/login_button_controller.dart';
+import 'package:vchat/core/controller/authenticate/login/login_text_editing_controller.dart';
+import 'package:vchat/core/controller/authenticate/register/register_button_controller.dart';
+import 'package:vchat/core/controller/authenticate/register/register_text_editing_controller.dart';
+import 'package:vchat/core/controller/welcome/welcome_controller.dart';
+import 'package:vchat/core/core.dart';
+import 'package:vchat/core/view/authenticate/login/login_view.dart';
+import 'package:vchat/core/view/authenticate/register/register_view.dart';
+import 'package:vchat/core/view/welcome/welcome_view.dart';
+import 'package:vchat/utility/theme/app_theme.dart';
+import 'package:vchat/view/chat/chat_view.dart';
+import 'package:vchat/view/home/home_view.dart';
+import 'package:vchat/view/search/search_view.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Firebase.initializeApp();
+  runApp(VChatApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class VChatApp extends StatelessWidget with Core {
+  VChatApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+    return Sizer(builder: (_, __, ___) {
+      return GetMaterialApp(
+        title: AppString.title,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.theme,
+        getPages: createGetPagesList(),
+        initialRoute: WelcomeView.id,
+        initialBinding: BindingsBuilder(() => dependencies()),
+        builder: EasyLoading.init(),
+      );
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+  void dependencies() {
+    Get.put<WelcomeController>(WelcomeController());
+    Get.lazyPut<LoginTextEditingController>(() => LoginTextEditingController(),
+        fenix: true);
+    Get.lazyPut<LoginButtonController>(() => LoginButtonController(),
+        fenix: true);
+    Get.lazyPut<RegisterTextEditingController>(
+        () => RegisterTextEditingController(),
+        fenix: true);
+    Get.lazyPut<RegisterButtonController>(() => RegisterButtonController(),
+        fenix: true);
+  }
+
+  @override
+  List<GetPage> createGetPagesList() {
+    final List<GetPage> _getPageList = <GetPage>[];
+    _getPageList.add(GetPage(
+      name: WelcomeView.id,
+      page: () => WelcomeView(
+        appTitle: AppString.title,
+        description: AppString.description,
+        buttonColor: AppColor.primaryColor,
+        fontSize: 16,
+        backgroundImage: AppAsset.welcomeBackground,
+        animatedTextFontFamily: "AmaticSC",
+        animatedTextList: const <String>[
+          AppString.welcomeAnimatedTextOne,
+          AppString.welcomeAnimatedTextTwo,
+          AppString.welcomeAnimatedTextThree,
+        ],
+        appLogo: AppAsset.vChatLogo,
+        descriptionColor: AppColor.primaryColorDark,
+        logoHeroAnimationTag: AppHeroTag.appLogo,
+        loginHeroAnimationTag: AppHeroTag.loginButton,
+        registerHeroAnimationTag: AppHeroTag.registerButton,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ));
+    _getPageList.add(GetPage(
+      name: LoginView.id,
+      page: () => LoginView(
+        backgroundImage: AppAsset.welcomeBackground,
+        primaryColor: AppColor.primaryColor,
+        fontSize: 16,
+        appLogo: AppAsset.vChatLogo,
+        animatedTextFontFamily: "AmaticSC",
+        logoHeroAnimationTag: AppHeroTag.appLogo,
+        loginHeroAnimationTag: AppHeroTag.loginButton,
+        registerHeroAnimationTag: AppHeroTag.registerButton,
+        splitWidgetHeroAnimationTag: AppHeroTag.splitWidget,
+        sectionTitle: "LOGIN",
+        emailHintText: "Email",
+        passwordHintText: "Password",
+        forgotText: "Forgot Password?",
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ));
+    _getPageList.add(GetPage(
+      name: RegisterView.id,
+      page: () => RegisterView(
+        backgroundImage: AppAsset.welcomeBackground,
+        primaryColor: AppColor.primaryColor,
+        fontSize: 16,
+        appLogo: AppAsset.vChatLogo,
+        animatedTextFontFamily: "AmaticSC",
+        logoHeroAnimationTag: AppHeroTag.appLogo,
+        loginHeroAnimationTag: AppHeroTag.loginButton,
+        registerHeroAnimationTag: AppHeroTag.registerButton,
+        splitWidgetHeroAnimationTag: AppHeroTag.splitWidget,
+        sectionTitle: "REGISTER",
+        nameHintText: "Name",
+        emailHintText: "Email",
+        passwordHintText: "Password",
+      ),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ));
+    _getPageList.add(GetPage(
+      name: HomeView.id,
+      page: () => HomeView(),
+      binding: BindingsBuilder(() => Get.lazyPut<ChatListController>(
+          () => ChatListController(),
+          fenix: true)),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ));
+    _getPageList.add(GetPage(
+      name: ChatView.id,
+      page: () => ChatView(),
+      bindings: [
+        BindingsBuilder(() =>
+            Get.lazyPut<ChatController>(() => ChatController(), fenix: true)),
+        BindingsBuilder(() => Get.lazyPut<PlayerController>(
+            () => PlayerController(),
+            fenix: true)),
+      ],
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ));
+    _getPageList.add(GetPage(
+      name: SearchView.id,
+      page: () => SearchView(),
+      binding: BindingsBuilder(() =>
+          Get.lazyPut<SearchController>(() => SearchController(), fenix: true)),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ));
+    return _getPageList;
   }
 }

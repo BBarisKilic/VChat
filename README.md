@@ -12,6 +12,8 @@ With the power of [Flutter](https://flutter.dev/) and [Firebase](https://firebas
 
 The project written solely in [Dart Language](https://dart.dev/).
 
+<p align="center"><img src="gifs/home.gif" width="300"></p>
+
 ### 1.1. Welcome Page
 
 A page that serves as the starting point of the application.

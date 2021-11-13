@@ -30,11 +30,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Firebase.initializeApp();
-  runApp(VChatApp());
+  runApp(const VChatApp());
 }
 
-class VChatApp extends StatelessWidget with Core {
-  VChatApp({Key? key}) : super(key: key);
+class VChatApp extends StatelessWidget implements Core {
+  const VChatApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

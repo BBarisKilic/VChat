@@ -35,7 +35,6 @@ class AuthTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       validator: validator,
-      autofocus: true,
       style: TextStyle(
         color: textColor,
         fontWeight: FontWeight.w700,

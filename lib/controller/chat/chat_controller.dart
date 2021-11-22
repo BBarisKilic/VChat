@@ -7,10 +7,11 @@ import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:vchat/core/service/abstracts/core_database_service.dart';
 import '../../data/effect_data.dart';
 import '../../model/effect.dart';
 import '../../model/message.dart';
-import '../../service/database_service.dart';
+import '../../service/concretes/database_adapter.dart';
 import '../../utility/app_config.dart';
 import 'package:path/path.dart' as p;
 
@@ -29,8 +30,8 @@ enum soundEffect {
 }
 
 class ChatController extends GetxController {
-  final _flutterFFmpeg = FlutterFFmpeg();
-  final DatabaseService _databaseService = DatabaseService();
+  late final FlutterFFmpeg _flutterFFmpeg;
+  late final CoreDatabaseService _databaseService;
   final _effects = <Effect>[].obs;
   final _pageOffset = 0.0.obs;
   final _effectLabel = 'Normal'.obs;
@@ -65,17 +66,20 @@ class ChatController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
+    _flutterFFmpeg = FlutterFFmpeg();
+    _databaseService = DatabaseAdapter();
     _userName = Get.arguments['userName'];
     _chatRoomId = Get.arguments['chatRoomId'];
     _pageController = PageController(viewportFraction: 0.7);
+
     _pageController.addListener(() {
       _pageOffset.value = _pageController.page as double;
     });
-    DatabaseService().getPreviousChatDetails(_chatRoomId).then((val) {
+    _databaseService.getPreviousChatDetails(_chatRoomId).then((val) {
       _chats = val;
       update();
     });
+    super.onInit();
   }
 
   @override

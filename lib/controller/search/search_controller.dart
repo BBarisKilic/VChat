@@ -2,28 +2,34 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:vchat/core/service/abstracts/core_database_service.dart';
 import '../../utility/app_config.dart';
-import '../../service/database_service.dart';
+import '../../service/concretes/database_adapter.dart';
 import '../../view/chat/chat_view.dart';
 
 class SearchController extends GetxController {
-  final DatabaseService _databaseMethods = DatabaseService();
-  final TextEditingController _searchEditingController =
-      TextEditingController();
+  late final CoreDatabaseService _coreDatabaseService;
+  late final TextEditingController _searchEditingController;
   final _haveUserSearched = false.obs;
   QuerySnapshot? _searchResultSnapshot;
 
-  DatabaseService get databaseMethods => _databaseMethods;
+  CoreDatabaseService get databaseService => _coreDatabaseService;
   TextEditingController get searchEditingController => _searchEditingController;
-
   bool get haveUserSearched => _haveUserSearched.value;
   QuerySnapshot? get searchResultSnapshot => _searchResultSnapshot;
+
+  @override
+  onInit() async {
+    _coreDatabaseService = DatabaseAdapter();
+    _searchEditingController = TextEditingController();
+    super.onInit();
+  }
 
   Future<void> initiateSearch() async {
     if (searchEditingController.text.isNotEmpty) {
       EasyLoading.show();
       await Future.delayed(const Duration(milliseconds: 1500));
-      _databaseMethods
+      _coreDatabaseService
           .searchByName(searchEditingController.text)
           .then((snapshot) {
         _searchResultSnapshot = snapshot;
@@ -52,7 +58,7 @@ class SearchController extends GetxController {
       'lastMessageDuration': 0,
     };
 
-    databaseMethods.addChatRoom(chatRoom, chatRoomId);
+    _coreDatabaseService.addChatRoom(chatRoom, chatRoomId);
 
     Get.toNamed(ChatView.id, arguments: <String, String>{
       'userName': userName,

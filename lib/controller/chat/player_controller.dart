@@ -1,10 +1,11 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
-import '../../service/storage_service.dart';
+import 'package:vchat/service/abstracts/storage_service.dart';
+import '../../service/concretes/storage_adapter.dart';
 
 class PlayerController extends GetxController {
-  final StorageService _storageService = StorageService();
+  late final StorageService _storageService;
   final _isRecordPlaying = false.obs;
   final _currentPosition = <int, int>{}.obs;
   late AudioPlayer _audioPlayer;
@@ -22,7 +23,7 @@ class PlayerController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
+    _storageService = StorageAdapter();
     _audioPlayer = AudioPlayer();
     _audioPlayer.onPlayerCompletion.listen((event) async {
       await _audioPlayer.seek(Duration.zero);
@@ -34,6 +35,7 @@ class PlayerController extends GetxController {
         _currentPosition[currentId] = _currentSecond;
       }
     });
+    super.onInit();
   }
 
   @override

@@ -1,32 +1,36 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../model/core_user.dart';
+import '../abstracts/authenticate_service.dart';
+import '../../model/core_user.dart';
 
-class AuthenticateService {
+class AuthenticateAdapter implements AuthenticateService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  CoreUser? _userFromUserCredential(User? _user) {
-    return _user != null ? CoreUser(uid: _user.uid) : null;
+  @override
+  CoreUser? userFromUserCredential(User? user) {
+    return user != null ? CoreUser(uid: user.uid) : null;
   }
 
+  @override
   Future<CoreUser?> registerWithEmailAndPassword(
-      String _email, String _password) async {
+      String email, String password) async {
     try {
       final UserCredential _userCredential = await _auth
-          .createUserWithEmailAndPassword(email: _email, password: _password);
+          .createUserWithEmailAndPassword(email: email, password: password);
       final User? _user = _userCredential.user;
-      return _userFromUserCredential(_user);
+      return userFromUserCredential(_user);
     } catch (e) {
       debugPrint(e.toString());
       return null;
     }
   }
 
+  @override
   Future<User?> signInWithEmailAndPassword(
-      String _email, String _password) async {
+      String email, String password) async {
     try {
       UserCredential _userCredential = await _auth.signInWithEmailAndPassword(
-          email: _email, password: _password);
+          email: email, password: password);
       final User? _user = _userCredential.user;
       return _user;
     } catch (e) {
@@ -35,6 +39,7 @@ class AuthenticateService {
     }
   }
 
+  @override
   Future<void> signOut() async {
     try {
       return await _auth.signOut();

@@ -1,23 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../core/service/core_database_service.dart';
+import '../../core/service/abstracts/core_database_service.dart';
 
-class DatabaseService extends CoreDatabaseService {
+class DatabaseAdapter extends CoreDatabaseService {
   @override
-  Future<void> addNewUser(Map<String, dynamic> _userData) async {
+  Future<void> addNewUser(Map<String, dynamic> userData) async {
     FirebaseFirestore.instance
         .collection('users')
-        .add(_userData)
+        .add(userData)
         .catchError((e) {
       debugPrint(e.toString());
     });
   }
 
   @override
-  Future<dynamic> getUserDetails(String _email) async {
+  Future<dynamic> getUserDetails(String email) async {
     return FirebaseFirestore.instance
         .collection('users')
-        .where('userEmail', isEqualTo: _email)
+        .where('userEmail', isEqualTo: email)
         .get()
         .catchError((e) {
       debugPrint(e.toString());
@@ -25,42 +25,42 @@ class DatabaseService extends CoreDatabaseService {
   }
 
   @override
-  Future<dynamic> searchByName(String _search) async {
+  Future<dynamic> searchByName(String search) async {
     return FirebaseFirestore.instance
         .collection('users')
-        .where('userName', isEqualTo: _search)
+        .where('userName', isEqualTo: search)
         .get();
   }
 
   @override
   Future<void> addChatRoom(
-      Map<String, dynamic> _chatRoom, String _chatRoomId) async {
+      Map<String, dynamic> chatRoom, String chatRoomId) async {
     FirebaseFirestore.instance
         .collection('chatRoom')
-        .doc(_chatRoomId)
-        .set(_chatRoom)
+        .doc(chatRoomId)
+        .set(chatRoom)
         .catchError((e) {
       debugPrint(e);
     });
   }
 
   @override
-  Future<dynamic> getPreviousChatDetails(String? _chatRoomId) async {
+  Future<dynamic> getPreviousChatDetails(String? chatRoomId) async {
     return FirebaseFirestore.instance
         .collection('chatRoom')
-        .doc(_chatRoomId)
+        .doc(chatRoomId)
         .collection('chats')
         .orderBy('time')
         .snapshots();
   }
 
   @override
-  Future<void> addMessage(String _chatRoomId, _chatMessageData) async {
+  Future<void> addMessage(String chatRoomId, chatMessageData) async {
     FirebaseFirestore.instance
         .collection('chatRoom')
-        .doc(_chatRoomId)
+        .doc(chatRoomId)
         .collection('chats')
-        .add(_chatMessageData.toMap())
+        .add(chatMessageData.toMap())
         .catchError((e) {
       debugPrint(e.toString());
     });
@@ -68,21 +68,21 @@ class DatabaseService extends CoreDatabaseService {
 
   @override
   Future<void> updateLastMessageInfo(
-      Map<String, dynamic> _lastMessageInfo, String _chatRoomId) async {
+      Map<String, dynamic> lastMessageInfo, String chatRoomId) async {
     FirebaseFirestore.instance
         .collection('chatRoom')
-        .doc(_chatRoomId)
-        .update(_lastMessageInfo)
+        .doc(chatRoomId)
+        .update(lastMessageInfo)
         .catchError((e) {
-      debugPrint(e);
+      debugPrint(e.toString());
     });
   }
 
   @override
-  Future<dynamic> getUserChats(String _currentUser) async {
+  Future<dynamic> getUserChats(String currentUser) async {
     return FirebaseFirestore.instance
         .collection('chatRoom')
-        .where('users', arrayContains: _currentUser)
+        .where('users', arrayContains: currentUser)
         .snapshots();
   }
 }

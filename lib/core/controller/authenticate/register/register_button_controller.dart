@@ -1,18 +1,21 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import '../../../service/abstracts/authenticate_service.dart';
 import '../../../model/core_user.dart';
-import '../../../service/authenticate_service.dart';
-import '../../../service/core_database_service.dart';
+import '../../../service/concretes/authenticate_adapter.dart';
+import '../../../service/abstracts/core_database_service.dart';
 import '../../../utility/easy_loading_theme_tool.dart';
-import '../../../../service/database_service.dart';
+import '../../../../service/concretes/database_adapter.dart';
 import '../../../utility/shared_preference_helper.dart';
 import '../../../../view/home/home_view.dart';
 
 class RegisterButtonController extends GetxController {
-  final AuthenticateService _authenticateService = AuthenticateService();
-  final CoreDatabaseService _coreDatabaseService = DatabaseService();
+  late final AuthenticateService _authenticateService;
+  late final CoreDatabaseService _coreDatabaseService;
 
   RegisterButtonController() {
+    _authenticateService = AuthenticateAdapter();
+    _coreDatabaseService = DatabaseAdapter();
     EasyLoadingThemeTool.mainTheme();
   }
 

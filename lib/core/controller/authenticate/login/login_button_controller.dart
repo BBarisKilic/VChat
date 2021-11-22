@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:vchat/core/service/authenticate_service.dart';
-import 'package:vchat/core/utility/easy_loading_theme_tool.dart';
-import 'package:vchat/service/database_service.dart';
-import 'package:vchat/core/utility/shared_preference_helper.dart';
-import 'package:vchat/view/home/home_view.dart';
+import '../../../service/authenticate_service.dart';
+import '../../../utility/easy_loading_theme_tool.dart';
+import '../../../../service/database_service.dart';
+import '../../../utility/shared_preference_helper.dart';
+import '../../../../view/home/home_view.dart';
 
 class LoginButtonController extends GetxController {
   final AuthenticateService _authenticateService = AuthenticateService();

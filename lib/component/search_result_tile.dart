@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vchat/constant/app_asset.dart';
-import 'package:vchat/constant/app_color.dart';
-import 'package:vchat/constant/app_hero_tag.dart';
-import 'package:vchat/controller/search/search_controller.dart';
+import '../constant/app_asset.dart';
+import '../constant/app_color.dart';
+import '../constant/app_hero_tag.dart';
+import '../controller/search/search_controller.dart';
 
 class SearchResultTile extends StatelessWidget {
   final String userName;

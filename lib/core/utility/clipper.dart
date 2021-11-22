@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vchat/core/view/authenticate/login/login_view.dart';
-import 'package:vchat/core/view/authenticate/register/register_view.dart';
+import '../view/authenticate/login/login_view.dart';
+import '../view/authenticate/register/register_view.dart';
 
 class Clipper extends CustomClipper<Path> {
   Clipper(this.routeId);

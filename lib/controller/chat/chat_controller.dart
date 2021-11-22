@@ -7,11 +7,11 @@ import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:vchat/data/effect_data.dart';
-import 'package:vchat/model/effect.dart';
-import 'package:vchat/model/message.dart';
-import 'package:vchat/service/database_service.dart';
-import 'package:vchat/utility/app_config.dart';
+import '../../data/effect_data.dart';
+import '../../model/effect.dart';
+import '../../model/message.dart';
+import '../../service/database_service.dart';
+import '../../utility/app_config.dart';
 import 'package:path/path.dart' as p;
 
 enum soundEffect {

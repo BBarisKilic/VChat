@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vchat/component/message_tile.dart';
-import 'package:vchat/constant/app_asset.dart';
-import 'package:vchat/constant/app_color.dart';
-import 'package:vchat/utility/app_config.dart';
-import 'package:vchat/constant/app_hero_tag.dart';
-import 'package:vchat/controller/chat/chat_controller.dart';
+import '../../component/message_tile.dart';
+import '../../constant/app_asset.dart';
+import '../../constant/app_color.dart';
+import '../../utility/app_config.dart';
+import '../../constant/app_hero_tag.dart';
+import '../../controller/chat/chat_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vchat/utility/message_tile_width_calculator.dart';
+import '../../utility/message_tile_width_calculator.dart';
 
 part './extension/chat_extension.dart';
 

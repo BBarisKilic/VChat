@@ -3,15 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vchat/component/chat_rooms_tile.dart';
-import 'package:vchat/constant/app_asset.dart';
-import 'package:vchat/constant/app_color.dart';
-import 'package:vchat/constant/app_hero_tag.dart';
-import 'package:vchat/constant/app_string.dart';
-import 'package:vchat/core/view/welcome/welcome_view.dart';
-import 'package:vchat/utility/app_config.dart';
-import 'package:vchat/controller/home/chat_list_controller.dart';
-import 'package:vchat/view/search/search_view.dart';
+import '../../component/chat_rooms_tile.dart';
+import '../../constant/app_asset.dart';
+import '../../constant/app_color.dart';
+import '../../constant/app_hero_tag.dart';
+import '../../constant/app_string.dart';
+import '../../core/view/welcome/welcome_view.dart';
+import '../../utility/app_config.dart';
+import '../../controller/home/chat_list_controller.dart';
+import '../search/search_view.dart';
 
 part './extension/home_extension.dart';
 

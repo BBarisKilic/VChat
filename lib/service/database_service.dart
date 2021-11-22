@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:vchat/core/service/core_database_service.dart';
+import '../core/service/core_database_service.dart';
 
 class DatabaseService extends CoreDatabaseService {
   @override

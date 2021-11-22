@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vchat/constant/app_color.dart';
-import 'package:vchat/controller/chat/player_controller.dart';
-import 'package:vchat/utility/time_formatter.dart';
+import '../constant/app_color.dart';
+import '../controller/chat/player_controller.dart';
+import '../utility/time_formatter.dart';
 
 class MessageTile extends StatelessWidget {
   final PlayerController _playerController = Get.find();

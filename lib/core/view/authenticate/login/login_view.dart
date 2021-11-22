@@ -2,13 +2,13 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vchat/core/component/auth_button.dart';
-import 'package:vchat/core/component/auth_text_field.dart';
-import 'package:vchat/core/utility/clipper.dart';
-import 'package:vchat/core/constant/core_color.dart';
-import 'package:vchat/core/controller/authenticate/login/login_button_controller.dart';
-import 'package:vchat/core/controller/authenticate/login/login_text_editing_controller.dart';
-import 'package:vchat/core/view/authenticate/register/register_view.dart';
+import '../../../component/auth_button.dart';
+import '../../../component/auth_text_field.dart';
+import '../../../utility/clipper.dart';
+import '../../../constant/core_color.dart';
+import '../../../controller/authenticate/login/login_button_controller.dart';
+import '../../../controller/authenticate/login/login_text_editing_controller.dart';
+import '../register/register_view.dart';
 
 part './extension/login_extension.dart';
 

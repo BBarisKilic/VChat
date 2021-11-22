@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:vchat/utility/app_config.dart';
-import 'package:vchat/service/database_service.dart';
-import 'package:vchat/view/chat/chat_view.dart';
+import '../../utility/app_config.dart';
+import '../../service/database_service.dart';
+import '../../view/chat/chat_view.dart';
 
 class SearchController extends GetxController {
   final DatabaseService _databaseMethods = DatabaseService();

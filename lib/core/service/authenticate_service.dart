@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:vchat/core/model/core_user.dart';
+import '../model/core_user.dart';
 
 class AuthenticateService {
   final FirebaseAuth _auth = FirebaseAuth.instance;

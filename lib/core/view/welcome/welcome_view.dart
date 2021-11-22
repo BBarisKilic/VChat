@@ -2,11 +2,11 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:vchat/constant/app_color.dart';
-import 'package:vchat/core/component/auth_button.dart';
-import 'package:vchat/core/controller/welcome/welcome_controller.dart';
-import 'package:vchat/core/view/authenticate/login/login_view.dart';
-import 'package:vchat/core/view/authenticate/register/register_view.dart';
+import '../../../constant/app_color.dart';
+import '../../component/auth_button.dart';
+import '../../controller/welcome/welcome_controller.dart';
+import '../authenticate/login/login_view.dart';
+import '../authenticate/register/register_view.dart';
 
 part './extension/welcome_extension.dart';
 

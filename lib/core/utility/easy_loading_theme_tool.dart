@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:vchat/core/constant/core_color.dart';
+import '../constant/core_color.dart';
 
 class EasyLoadingThemeTool {
   static void mainTheme() {

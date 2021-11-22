@@ -9,7 +9,7 @@ import 'package:vchat/controller/search/search_controller.dart';
 part './extension/search_extension.dart';
 
 class SearchView extends StatelessWidget {
-  static const String id = "/search";
+  static const String id = '/search';
 
   final SearchController _searchController = Get.find();
 

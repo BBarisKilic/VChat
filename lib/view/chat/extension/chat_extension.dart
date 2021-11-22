@@ -22,7 +22,7 @@ extension on ChatView {
               ),
             ),
             Hero(
-              tag: AppHeroTag.profileImage + (_chatController.userName ?? ""),
+              tag: AppHeroTag.profileImage + (_chatController.userName ?? ''),
               child: Image.asset(
                 AppAsset.anonymLogo,
                 height: 5.h,
@@ -38,7 +38,7 @@ extension on ChatView {
                 pause: Duration.zero,
                 animatedTexts: [
                   ColorizeAnimatedText(
-                    _chatController.userName ?? "",
+                    _chatController.userName ?? '',
                     speed: const Duration(milliseconds: 1000),
                     textStyle: const TextStyle(
                       color: AppColor.primaryTextColor,
@@ -82,16 +82,16 @@ extension on ChatView {
                           id: index,
                           chatRoomId: _chatController.chatRoomId!,
                           duration:
-                              reversedData!.elementAt(index).get("duration"),
-                          sendBy: reversedData.elementAt(index).get("sendBy"),
-                          time: reversedData.elementAt(index).get("time"),
+                              reversedData!.elementAt(index).get('duration'),
+                          sendBy: reversedData.elementAt(index).get('sendBy'),
+                          time: reversedData.elementAt(index).get('time'),
                           sendByCurrentUser: AppConfig.currentUserName ==
-                              reversedData.elementAt(index).get("sendBy"),
+                              reversedData.elementAt(index).get('sendBy'),
                           messageTileWidth:
                               MessageTileWidthCalculator.calculate(Duration(
                                   seconds: reversedData
                                       .elementAt(index)
-                                      .get("duration"))));
+                                      .get('duration'))));
                     },
                   )
                 : Container();

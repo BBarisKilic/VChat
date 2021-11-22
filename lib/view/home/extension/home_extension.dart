@@ -77,17 +77,17 @@ extension on HomeView {
                     itemBuilder: (context, index) {
                       return ChatRoomsTile(
                         userName: snapshot.data!.docs[index]
-                            .get("chatRoomId")
+                            .get('chatRoomId')
                             .toString()
-                            .replaceAll("_", "")
-                            .replaceAll(AppConfig.currentUserName, ""),
+                            .replaceAll('_', '')
+                            .replaceAll(AppConfig.currentUserName, ''),
                         chatRoomId:
-                            snapshot.data?.docs[index].get("chatRoomId"),
+                            snapshot.data?.docs[index].get('chatRoomId'),
                         lastMessageTime: snapshot.data?.docs[index]
-                            .get("lastMessageTime")
+                            .get('lastMessageTime')
                             .toString(),
                         lastMessageDuration: snapshot.data?.docs[index]
-                            .get("lastMessageDuration")
+                            .get('lastMessageDuration')
                             .toString(),
                       );
                     })

@@ -13,7 +13,7 @@ import 'package:vchat/core/view/authenticate/login/login_view.dart';
 part './extension/register_extension.dart';
 
 class RegisterView extends StatelessWidget {
-  static const String id = "/register";
+  static const String id = '/register';
 
   final RegisterTextEditingController _registerViewTextEditingController =
       Get.find();
@@ -42,23 +42,23 @@ class RegisterView extends StatelessWidget {
     Key? key,
     required this.backgroundImage,
     this.primaryColor = Colors.white,
-    this.loginText = "Login",
-    this.registerText = "Register",
+    this.loginText = 'Login',
+    this.registerText = 'Register',
     this.fontSize = 12,
     required this.appLogo,
     this.animatedTextFontSize = 40,
     required this.animatedTextFontFamily,
-    this.sectionTitle = "",
-    this.logoHeroAnimationTag = "",
-    this.loginHeroAnimationTag = "",
-    this.registerHeroAnimationTag = "",
-    this.splitWidgetHeroAnimationTag = "",
-    this.nameHintText = "",
-    this.emailHintText = "",
-    this.passwordHintText = "",
-    this.nameFieldErrorText = "",
-    this.emailFieldErrorText = "",
-    this.passwordFieldErrorText = "",
+    this.sectionTitle = '',
+    this.logoHeroAnimationTag = '',
+    this.loginHeroAnimationTag = '',
+    this.registerHeroAnimationTag = '',
+    this.splitWidgetHeroAnimationTag = '',
+    this.nameHintText = '',
+    this.emailHintText = '',
+    this.passwordHintText = '',
+    this.nameFieldErrorText = '',
+    this.emailFieldErrorText = '',
+    this.passwordFieldErrorText = '',
   }) : super(key: key);
 
   @override

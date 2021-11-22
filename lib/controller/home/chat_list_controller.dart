@@ -18,17 +18,17 @@ class ChatListController extends GetxController {
 
   Future<void> _getChatRooms() async {
     AppConfig.currentUserName =
-        await SharedPreferenceHelper.getUserNameSharedPreference() ?? "";
+        await SharedPreferenceHelper.getUserNameSharedPreference() ?? '';
     try {
       DatabaseService()
           .getUserChats(AppConfig.currentUserName)
           .then((snapshots) {
         _chatRooms = snapshots;
-        debugPrint("Name: ${AppConfig.currentUserName.toUpperCase()}");
+        debugPrint('Name: ${AppConfig.currentUserName.toUpperCase()}');
         update();
       });
     } catch (e) {
-      Get.snackbar("Could get data!", "Please check your internet connection.");
+      Get.snackbar('Could get data!', 'Please check your internet connection.');
     }
   }
 }

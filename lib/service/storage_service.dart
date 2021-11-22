@@ -6,7 +6,7 @@ class StorageService {
     FirebaseStorage firebaseStorage = FirebaseStorage.instance;
     ListResult listResult = await firebaseStorage
         .ref()
-        .child("records")
+        .child('records')
         .child(_chatRoomId)
         .child(_sendBy)
         .list();

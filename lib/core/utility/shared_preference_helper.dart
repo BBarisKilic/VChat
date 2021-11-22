@@ -1,13 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
-  static String sharedPreferenceUserLoggedInKey = "LOGGED_IN_KEY";
-  static String sharedPreferenceUserNameKey = "USER_NAME_KEY";
-  static String sharedPreferenceUserEmailKey = "USER_EMAIL_KEY";
-  static String sharedPreferenceUserImageKey = "USER_IMAGE_KEY";
-  static String sharedPreferenceUserRegisterDateKey = "USER_REGISTER_DATE_KEY";
-  static String sharedPreferenceUserFCMTokenKey = "USER_FCM_TOKEN_KEY";
-  static String sharedPreferenceUserIdKey = "USER_ID_KEY";
+  static String sharedPreferenceUserLoggedInKey = 'LOGGED_IN_KEY';
+  static String sharedPreferenceUserNameKey = 'USER_NAME_KEY';
+  static String sharedPreferenceUserEmailKey = 'USER_EMAIL_KEY';
+  static String sharedPreferenceUserImageKey = 'USER_IMAGE_KEY';
+  static String sharedPreferenceUserRegisterDateKey = 'USER_REGISTER_DATE_KEY';
+  static String sharedPreferenceUserFCMTokenKey = 'USER_FCM_TOKEN_KEY';
+  static String sharedPreferenceUserIdKey = 'USER_ID_KEY';
 
   static Future<bool> saveUserLoggedInSharedPreference(
       bool isUserLoggedIn) async {

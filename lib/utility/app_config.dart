@@ -1,3 +1,3 @@
 class AppConfig {
-  static String currentUserName = "";
+  static String currentUserName = '';
 }

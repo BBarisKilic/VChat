@@ -22,15 +22,15 @@ class LoginButtonController extends GetxController {
     //await Future.delayed(const Duration(milliseconds: 3000));
     EasyLoading.dismiss();
     if (_user == null) {
-      Get.snackbar("Could not login!", "Please check your email and password.");
+      Get.snackbar('Could not login!', 'Please check your email and password.');
     } else {
       QuerySnapshot userInfoSnapshot =
           await DatabaseService().getUserDetails(_email);
       await SharedPreferenceHelper.saveUserLoggedInSharedPreference(true);
       await SharedPreferenceHelper.saveUserNameSharedPreference(
-          userInfoSnapshot.docs[0].get("userName"));
+          userInfoSnapshot.docs[0].get('userName'));
       await SharedPreferenceHelper.saveUserEmailSharedPreference(
-          userInfoSnapshot.docs[0].get("userEmail"));
+          userInfoSnapshot.docs[0].get('userEmail'));
       Get.offAllNamed(HomeView.id);
     }
   }

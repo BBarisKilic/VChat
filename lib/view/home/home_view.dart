@@ -16,7 +16,7 @@ import 'package:vchat/view/search/search_view.dart';
 part './extension/home_extension.dart';
 
 class HomeView extends StatelessWidget {
-  static const String id = "/home";
+  static const String id = '/home';
 
   final ChatListController _chatListController = Get.find();
 

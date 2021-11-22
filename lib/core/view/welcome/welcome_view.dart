@@ -11,7 +11,7 @@ import 'package:vchat/core/view/authenticate/register/register_view.dart';
 part './extension/welcome_extension.dart';
 
 class WelcomeView extends StatelessWidget {
-  static const String id = "/welcome";
+  static const String id = '/welcome';
 
   final WelcomeController _welcomeController = Get.find();
 
@@ -37,8 +37,8 @@ class WelcomeView extends StatelessWidget {
       required this.appTitle,
       required this.description,
       this.buttonColor = Colors.blue,
-      this.loginText = "Login",
-      this.registerText = "Register",
+      this.loginText = 'Login',
+      this.registerText = 'Register',
       this.fontSize = 12,
       required this.backgroundImage,
       required this.appLogo,
@@ -47,9 +47,9 @@ class WelcomeView extends StatelessWidget {
       required this.animatedTextList,
       this.appTitleColor = Colors.white,
       this.descriptionColor = Colors.white,
-      this.logoHeroAnimationTag = "",
-      this.loginHeroAnimationTag = "",
-      this.registerHeroAnimationTag = ""})
+      this.logoHeroAnimationTag = '',
+      this.loginHeroAnimationTag = '',
+      this.registerHeroAnimationTag = ''})
       : super(key: key);
 
   @override

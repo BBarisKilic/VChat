@@ -15,7 +15,7 @@ import 'package:vchat/utility/message_tile_width_calculator.dart';
 part './extension/chat_extension.dart';
 
 class ChatView extends StatelessWidget {
-  static const String id = "/chat";
+  static const String id = '/chat';
 
   final ChatController _chatController = Get.find();
 

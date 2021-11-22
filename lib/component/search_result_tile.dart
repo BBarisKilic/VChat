@@ -74,7 +74,7 @@ class SearchResultTile extends StatelessWidget {
                   ]),
                   borderRadius: BorderRadius.circular(4)),
               child: const Text(
-                "Message",
+                'Message',
                 style: TextStyle(
                     color: AppColor.primaryTextColorLight, fontSize: 18),
               ),

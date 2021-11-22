@@ -33,12 +33,12 @@ class ChatController extends GetxController {
   final DatabaseService _databaseService = DatabaseService();
   final _effects = <Effect>[].obs;
   final _pageOffset = 0.0.obs;
-  final _effectLabel = "Normal".obs;
+  final _effectLabel = 'Normal'.obs;
   final _showForwardButton = true.obs;
   final _showBackButton = false.obs;
   final _isRecording = false.obs;
   final _isUploading = false.obs;
-  final _currentState = "Sending record...".obs;
+  final _currentState = 'Sending record...'.obs;
   String? _userName;
   String? _chatRoomId;
   Stream<QuerySnapshot>? _chats;
@@ -66,8 +66,8 @@ class ChatController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _userName = Get.arguments["userName"];
-    _chatRoomId = Get.arguments["chatRoomId"];
+    _userName = Get.arguments['userName'];
+    _chatRoomId = Get.arguments['chatRoomId'];
     _pageController = PageController(viewportFraction: 0.7);
     _pageController.addListener(() {
       _pageOffset.value = _pageController.page as double;
@@ -96,8 +96,8 @@ class ChatController extends GetxController {
   void _createEffectList() {
     for (int i = 0; i < EffectData.data.length; i++) {
       _effects.add(Effect(
-          imagePath: EffectData.data[i]["image"],
-          name: EffectData.data[i]["name"]));
+          imagePath: EffectData.data[i]['image'],
+          name: EffectData.data[i]['name']));
     }
   }
 
@@ -119,7 +119,7 @@ class ChatController extends GetxController {
       }
       _filePath = filepath;
     } else {
-      Get.snackbar("Could not record!", "Please enable recording permission.");
+      Get.snackbar('Could not record!', 'Please enable recording permission.');
     }
   }
 
@@ -132,11 +132,11 @@ class ChatController extends GetxController {
     _setEffect();
 
     if (_effectCommand != null) {
-      _currentState.value = "Adding effect...";
+      _currentState.value = 'Adding effect...';
       _filePath = await _addEffectToRecord(_effectCommand!);
     }
 
-    _currentState.value = "Sending record...";
+    _currentState.value = 'Sending record...';
 
     //get details
     final audioDetails = await _audioRecorder!.current();
@@ -151,7 +151,7 @@ class ChatController extends GetxController {
     try {
       _isSuccessful = true;
       await firebaseStorage
-          .ref("records")
+          .ref('records')
           .child(_chatRoomId!)
           .child(AppConfig.currentUserName)
           .child(
@@ -159,13 +159,13 @@ class ChatController extends GetxController {
           .putFile(File(_filePath));
     } catch (e) {
       _isSuccessful = false;
-      Get.snackbar("Could not send!",
-          "Error occured while sending message, please check your connection.");
+      Get.snackbar('Could not send!',
+          'Error occured while sending message, please check your connection.');
     } finally {
       if (_isSuccessful) {
         Map<String, dynamic> _lastMessageInfo = {
-          "lastMessageTime": int.parse(_recordTime),
-          "lastMessageDuration": audioDetails!.duration!.inSeconds,
+          'lastMessageTime': int.parse(_recordTime),
+          'lastMessageDuration': audioDetails!.duration!.inSeconds,
         };
 
         await _databaseService.updateLastMessageInfo(
@@ -244,11 +244,11 @@ class ChatController extends GetxController {
 
     try {
       await _flutterFFmpeg.execute(
-          "-i $safeOriginalRecordPath $effectCommand $safeFinalRecordPath");
+          '-i $safeOriginalRecordPath $effectCommand $safeFinalRecordPath');
     } on Exception catch (exception) {
-      debugPrint("Try Catch for FFMPEG Execution $exception");
+      debugPrint('Try Catch for FFMPEG Execution $exception');
     } catch (error) {
-      debugPrint("Try Catch for FFMPEG Execution $error");
+      debugPrint('Try Catch for FFMPEG Execution $error');
     }
 
     return finalRecordPath;

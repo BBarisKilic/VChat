@@ -16,7 +16,7 @@ class AuthTextField extends StatelessWidget {
   const AuthTextField({
     Key? key,
     required this.controller,
-    this.hintText = "",
+    this.hintText = '',
     required this.prefixIcon,
     this.suffixIcon,
     this.cursorColor = Colors.black,
@@ -24,7 +24,7 @@ class AuthTextField extends StatelessWidget {
     this.obscureText = false,
     this.validator,
     this.valid = true,
-    this.errorText = "",
+    this.errorText = '',
   }) : super(key: key);
 
   @override

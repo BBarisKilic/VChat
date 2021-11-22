@@ -26,8 +26,8 @@ class ChatRoomsTile extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.toNamed(ChatView.id, arguments: <String, String>{
-          "userName": userName,
-          "chatRoomId": chatRoomId
+          'userName': userName,
+          'chatRoomId': chatRoomId
         });
       },
       child: Container(
@@ -95,7 +95,7 @@ class ChatRoomsTile extends StatelessWidget {
                 TimeFormatter.format(
                     duration: Duration(
                         seconds:
-                            int.tryParse(lastMessageDuration ?? "0") ?? 0)),
+                            int.tryParse(lastMessageDuration ?? '0') ?? 0)),
                 textAlign: TextAlign.start,
                 style: const TextStyle(
                     color: AppColor.primaryTextColor,
@@ -112,7 +112,7 @@ class ChatRoomsTile extends StatelessWidget {
   Text _buildSuffix() {
     return Text(
       TimeFormatter.fromMilliSecondsToFormattedDate(
-          int.tryParse(lastMessageTime ?? "0") ?? 0),
+          int.tryParse(lastMessageTime ?? '0') ?? 0),
       style: const TextStyle(
           color: AppColor.primaryTextColor,
           fontSize: 16,

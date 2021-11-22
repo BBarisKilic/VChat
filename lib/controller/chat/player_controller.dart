@@ -9,8 +9,8 @@ class PlayerController extends GetxController {
   final _currentPosition = <int, int>{}.obs;
   late AudioPlayer _audioPlayer;
   Iterable<Reference>? _reference;
-  String _loadedChatRoomId = "";
-  String _loadedSendBy = "";
+  String _loadedChatRoomId = '';
+  String _loadedSendBy = '';
   int _loadedTime = -1;
   int _currentId = -1;
   int _currentDuration = -1;
@@ -77,7 +77,7 @@ class PlayerController extends GetxController {
     final List<Reference> _references =
         await _storageService.getUserRecords(_chatRoomId, _sendBy);
     _reference = _references.where((element) {
-      if (element.name == (_time.toString() + ".wav")) return true;
+      if (element.name == (_time.toString() + '.wav')) return true;
       return false;
     });
     _loadedChatRoomId = _chatRoomId;

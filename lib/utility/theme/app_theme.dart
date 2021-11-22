@@ -3,7 +3,7 @@ import 'package:vchat/constant/app_color.dart';
 
 class AppTheme {
   static ThemeData theme = ThemeData(
-    fontFamily: "NanumGothicCoding",
+    fontFamily: 'NanumGothicCoding',
     primaryColor: AppColor.primaryColor,
     primaryColorDark: AppColor.primaryColorDark,
     primaryColorLight: AppColor.primaryColorLight,

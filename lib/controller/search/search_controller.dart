@@ -36,9 +36,9 @@ class SearchController extends GetxController {
 
   String getChatRoomId(String a, String b) {
     if (a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
-      return "$b\_$a";
+      return '$b\_$a';
     } else {
-      return "$a\_$b";
+      return '$a\_$b';
     }
   }
 
@@ -46,17 +46,17 @@ class SearchController extends GetxController {
     List<String> users = [AppConfig.currentUserName, userName];
     String chatRoomId = getChatRoomId(AppConfig.currentUserName, userName);
     Map<String, dynamic> chatRoom = {
-      "users": users,
-      "chatRoomId": chatRoomId,
-      "lastMessageTime": 0,
-      "lastMessageDuration": 0,
+      'users': users,
+      'chatRoomId': chatRoomId,
+      'lastMessageTime': 0,
+      'lastMessageDuration': 0,
     };
 
     databaseMethods.addChatRoom(chatRoom, chatRoomId);
 
     Get.toNamed(ChatView.id, arguments: <String, String>{
-      "userName": userName,
-      "chatRoomId": chatRoomId
+      'userName': userName,
+      'chatRoomId': chatRoomId
     });
   }
 }

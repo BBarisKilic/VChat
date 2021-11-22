@@ -24,17 +24,17 @@ class RegisterButtonController extends GetxController {
     await Future.delayed(const Duration(milliseconds: 3000));
     EasyLoading.dismiss();
     if (result == null) {
-      Get.snackbar("Could not register!", "Please try again.");
+      Get.snackbar('Could not register!', 'Please try again.');
     } else {
       Map<String, dynamic> _userDataMap = {
-        "userName": _name,
-        "userEmail": _email,
-        "userImageUrl": "",
-        "registerDate": DateTime.now().millisecondsSinceEpoch,
-        "fcmToken":
+        'userName': _name,
+        'userEmail': _email,
+        'userImageUrl': '',
+        'registerDate': DateTime.now().millisecondsSinceEpoch,
+        'fcmToken':
             await SharedPreferenceHelper.getUserFCMTokenSharedPreference() ??
-                "NO TOKEN",
-        "userId": "",
+                'NO TOKEN',
+        'userId': '',
       };
       await _coreDatabaseService.addNewUser(_userDataMap);
       await SharedPreferenceHelper.saveUserLoggedInSharedPreference(true);
@@ -42,7 +42,7 @@ class RegisterButtonController extends GetxController {
       await SharedPreferenceHelper.saveUserEmailSharedPreference(_email);
       Get.offAllNamed(HomeView.id);
       Get.snackbar(
-          "Succesfully registered!", "Succesfully logged in to the account.");
+          'Succesfully registered!', 'Succesfully logged in to the account.');
     }
   }
 }

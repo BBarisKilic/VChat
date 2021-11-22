@@ -31,7 +31,7 @@ extension on SearchView {
                 pause: Duration.zero,
                 animatedTexts: [
                   ColorizeAnimatedText(
-                    "Search",
+                    'Search',
                     speed: const Duration(milliseconds: 1000),
                     textStyle: const TextStyle(
                       color: AppColor.primaryTextColor,
@@ -76,7 +76,7 @@ extension on SearchView {
                 fontSize: 18,
               ),
               decoration: const InputDecoration(
-                  hintText: "Search Username...",
+                  hintText: 'Search Username...',
                   hintStyle: TextStyle(
                     color: AppColor.primaryTextColor,
                     fontSize: 18,
@@ -107,9 +107,9 @@ extension on SearchView {
             itemBuilder: (context, index) {
               return SearchResultTile(
                 userName: _searchController.searchResultSnapshot?.docs[index]
-                    .get("userName"),
+                    .get('userName'),
                 userEmail: _searchController.searchResultSnapshot?.docs[index]
-                    .get("userEmail"),
+                    .get('userEmail'),
               );
             })
         : Container();

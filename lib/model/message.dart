@@ -6,6 +6,6 @@ class Message {
   Message({required this.duration, required this.sendBy, required this.time});
 
   Map<String, dynamic> toMap() {
-    return {"duration": duration, "sendBy": sendBy, "time": time};
+    return {'duration': duration, 'sendBy': sendBy, 'time': time};
   }
 }

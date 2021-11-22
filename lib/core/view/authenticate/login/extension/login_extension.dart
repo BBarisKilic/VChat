@@ -163,7 +163,7 @@ extension on LoginView {
         ),
         Expanded(
           child: Text(
-            "or",
+            'or',
             style: TextStyle(
               color: CoreColor.primaryColor,
               fontSize: fontSize,

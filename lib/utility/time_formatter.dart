@@ -11,14 +11,14 @@ class TimeFormatter {
   }
 
   static formatHHmmss({required Duration duration}) {
-    String time = duration.toString().split('.').first.padLeft(8, "0");
+    String time = duration.toString().split('.').first.padLeft(8, '0');
     return time;
   }
 
   static fromMilliSecondsToFormattedDate(int milliSecondsSinceEpoch) {
     final DateTime date =
         DateTime.fromMillisecondsSinceEpoch(milliSecondsSinceEpoch);
-    final format = DateFormat("yMd");
+    final format = DateFormat('yMd');
     final dateString = format.format(date);
     return dateString;
   }

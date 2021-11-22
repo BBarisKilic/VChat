@@ -4,14 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+
 import 'constant/app_asset.dart';
 import 'constant/app_color.dart';
 import 'constant/app_hero_tag.dart';
 import 'constant/app_string.dart';
 import 'controller/chat/chat_controller.dart';
 import 'controller/chat/player_controller.dart';
-import 'controller/search/search_controller.dart';
 import 'controller/home/chat_list_controller.dart';
+import 'controller/search/search_controller.dart';
 import 'core/controller/authenticate/login/login_button_controller.dart';
 import 'core/controller/authenticate/login/login_text_editing_controller.dart';
 import 'core/controller/authenticate/register/register_button_controller.dart';

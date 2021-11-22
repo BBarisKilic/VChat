@@ -63,6 +63,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       backgroundColor: CoreColor.primaryColorLight,
       body: SingleChildScrollView(
+        reverse: true,
         child: Column(
           children: [
             ClipPath(

@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../component/search_result_tile.dart';
 import '../../constant/app_color.dart';
 import '../../controller/search/search_controller.dart';

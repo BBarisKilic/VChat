@@ -59,45 +59,41 @@ extension on RegisterView {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Obx(() => AuthTextField(
-                    controller: _registerViewTextEditingController
-                        .nameTextEditingController,
-                    hintText: nameHintText,
-                    prefixIcon: Icons.person,
-                    cursorColor: primaryColor,
-                    textColor: primaryColor,
-                    errorText: nameFieldErrorText,
-                    valid: _registerViewTextEditingController.nameFieldValid,
-                  )),
+              AuthTextField(
+                controller: _registerViewTextEditingController
+                    .nameTextEditingController,
+                hintText: nameHintText,
+                prefixIcon: Icons.person,
+                cursorColor: primaryColor,
+                textColor: primaryColor,
+                errorText: nameFieldErrorText,
+              ),
               SizedBox(
                 height: 2.h,
               ),
-              Obx(() => AuthTextField(
-                    controller: _registerViewTextEditingController
-                        .emailTextEditingController,
-                    hintText: emailHintText,
-                    prefixIcon: Icons.email_rounded,
-                    cursorColor: primaryColor,
-                    textColor: primaryColor,
-                    errorText: emailFieldErrorText,
-                    valid: _registerViewTextEditingController.emailFieldValid,
-                  )),
+              AuthTextField(
+                controller: _registerViewTextEditingController
+                    .emailTextEditingController,
+                hintText: emailHintText,
+                prefixIcon: Icons.email_rounded,
+                cursorColor: primaryColor,
+                textColor: primaryColor,
+                errorText: emailFieldErrorText,
+              ),
               SizedBox(
                 height: 2.h,
               ),
-              Obx(() => AuthTextField(
-                    controller: _registerViewTextEditingController
-                        .passwordTextEditingController,
-                    hintText: passwordHintText,
-                    suffixIcon: Icons.visibility_off_outlined,
-                    prefixIcon: Icons.lock_rounded,
-                    cursorColor: primaryColor,
-                    textColor: primaryColor,
-                    obscureText: true,
-                    errorText: passwordFieldErrorText,
-                    valid:
-                        _registerViewTextEditingController.passwordFieldValid,
-                  )),
+              AuthTextField(
+                controller: _registerViewTextEditingController
+                    .passwordTextEditingController,
+                hintText: passwordHintText,
+                suffixIcon: Icons.visibility_off_outlined,
+                prefixIcon: Icons.lock_rounded,
+                cursorColor: primaryColor,
+                textColor: primaryColor,
+                obscureText: true,
+                errorText: passwordFieldErrorText,
+              ),
               const Expanded(child: SizedBox()),
               Hero(
                 tag: registerHeroAnimationTag,
@@ -112,6 +108,8 @@ extension on RegisterView {
                               .emailTextEditingController.text,
                           _registerViewTextEditingController
                               .passwordTextEditingController.text);
+                    } else {
+                      Get.snackbar('Could not register!', 'Please try again.');
                     }
                   },
                   textColor: CoreColor.primaryColorLight,

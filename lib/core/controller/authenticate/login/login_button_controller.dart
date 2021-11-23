@@ -20,17 +20,17 @@ class LoginButtonController extends GetxController {
     EasyLoadingThemeTool.mainTheme();
   }
 
-  void loginButtonPressed(final String _email, final String _password) async {
+  void loginButtonPressed(final String email, final String password) async {
     EasyLoading.show();
-    User? _user = await _authenticateService.signInWithEmailAndPassword(
-        _email, _password);
-    //await Future.delayed(const Duration(milliseconds: 3000));
+    User? _user =
+        await _authenticateService.signInWithEmailAndPassword(email, password);
+    await Future.delayed(const Duration(milliseconds: 500));
     EasyLoading.dismiss();
     if (_user == null) {
       Get.snackbar('Could not login!', 'Please check your email and password.');
     } else {
       QuerySnapshot userInfoSnapshot =
-          await _coreDatabaseService.getUserDetails(_email);
+          await _coreDatabaseService.getUserDetails(email);
       await SharedPreferenceHelper.saveUserLoggedInSharedPreference(true);
       await SharedPreferenceHelper.saveUserNameSharedPreference(
           userInfoSnapshot.docs[0].get('userName'));

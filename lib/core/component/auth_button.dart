@@ -21,7 +21,10 @@ class AuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed,
+      onPressed: () {
+        FocusScope.of(context).unfocus();
+        return onPressed();
+      },
       style: ButtonStyle(
         padding: MaterialStateProperty.all(
           const EdgeInsets.symmetric(vertical: 20.0),

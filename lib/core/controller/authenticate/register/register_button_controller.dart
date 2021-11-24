@@ -13,10 +13,12 @@ class RegisterButtonController extends GetxController {
   late final AuthenticateService _authenticateService;
   late final CoreDatabaseService _coreDatabaseService;
 
-  RegisterButtonController() {
+  @override
+  void onInit() {
     _authenticateService = AuthenticateAdapter();
     _coreDatabaseService = DatabaseAdapter();
     EasyLoadingThemeTool.mainTheme();
+    super.onInit();
   }
 
   void registerButtonPressed(

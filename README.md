@@ -12,43 +12,45 @@ With the power of [Flutter](https://flutter.dev/) and [Firebase](https://firebas
 
 The project written solely in [Dart Language](https://dart.dev/).
 
-<p align="center"><img src="gifs/home.gif" width="300"></p>
+| ![editable_image_1](https://github.com/BBarisKilic/VChat/blob/master/gifs/welcome.gif?raw=true) | ![editable_image_2](https://github.com/BBarisKilic/VChat/blob/master/gifs/transition_1.gif?raw=true) | ![editable_image_2](https://github.com/BBarisKilic/VChat/blob/master/gifs/transition_2.gif?raw=true)
+| :---: | :---: | :---: |
+![editable_image_1](https://github.com/BBarisKilic/VChat/blob/master/gifs/transition_3.gif?raw=true) | ![editable_image_1](https://github.com/BBarisKilic/VChat/blob/master/gifs/effects.gif?raw=true) | ![editable_image_2](https://github.com/BBarisKilic/VChat/blob/master/gifs/logout.gif?raw=true)
 
 ### 1.1. Welcome Page
 
 A page that serves as the starting point of the application.
 
-<p align="center"><img src="screenshots/welcome_page.png" width="300"></p>
+<p align="center"><img src="screenshots/welcome_page.png" width="250"></p>
 
 ### 1.2. Login Page
 
 A page where user identification and authentication is performed.
 
-<p align="center"><img src="screenshots/login_page.png" width="300"></p>
+<p align="center"><img src="screenshots/login_page.png" width="250"></p>
 
 ### 1.3. Register Page
 
 A page that enables users to independently register and gain access to system.
 
-<p align="center"><img src="screenshots/register_page.png" width="300"></p>
+<p align="center"><img src="screenshots/register_page.png" width="250"></p>
 
 ### 1.4. Home Page
 
 A page that shows the list of previous chats and provides access to other pages.
 
-<p align="center"><img src="screenshots/home_page.png" width="300"></p>
+<p align="center"><img src="screenshots/home_page.png" width="250"></p>
 
 ### 1.5. Search Page
 
 A page where users can search the other users to start chatting with them.
 
-<p align="center"><img src="screenshots/search_page.png" width="300"></p>
+<p align="center"><img src="screenshots/search_page.png" width="250"></p>
 
 ### 1.6. Chat Page
 
 The most important page of the app. Users can interact with others on this page and can send and receive voice records in real-time.
 
-<p align="center"><img src="screenshots/chat_page_1.png" width="300">&nbsp; &nbsp;<img src="screenshots/chat_page_2.png" width="300"></p>
+<p align="center"><img src="screenshots/chat_page_1.png" width="250">&nbsp; &nbsp;<img src="screenshots/chat_page_2.png" width="250"></p>
 
 &nbsp;
 

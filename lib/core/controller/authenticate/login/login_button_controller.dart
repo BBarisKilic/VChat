@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:vchat/core/service/abstracts/core_database_service.dart';
+import '../../../service/abstracts/core_database_service.dart';
 import '../../../service/abstracts/authenticate_service.dart';
 import '../../../service/concretes/authenticate_adapter.dart';
 import '../../../utility/easy_loading_theme_tool.dart';

@@ -7,7 +7,7 @@ import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:vchat/core/service/abstracts/core_database_service.dart';
+import '../../service/abstracts/database_service.dart';
 import '../../data/effect_data.dart';
 import '../../model/effect.dart';
 import '../../model/message.dart';
@@ -31,7 +31,7 @@ enum soundEffect {
 
 class ChatController extends GetxController {
   late final FlutterFFmpeg _flutterFFmpeg;
-  late final CoreDatabaseService _databaseService;
+  late final DatabaseService _databaseService;
   final _effects = <Effect>[].obs;
   final _pageOffset = 0.0.obs;
   final _effectLabel = 'Normal'.obs;

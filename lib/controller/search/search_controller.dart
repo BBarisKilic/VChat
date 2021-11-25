@@ -2,18 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:vchat/core/service/abstracts/core_database_service.dart';
+import '../../service/abstracts/database_service.dart';
 import '../../utility/app_config.dart';
 import '../../service/concretes/database_adapter.dart';
 import '../../view/chat/chat_view.dart';
 
 class SearchController extends GetxController {
-  late final CoreDatabaseService _coreDatabaseService;
+  late final DatabaseService _coreDatabaseService;
   late final TextEditingController _searchEditingController;
   final _haveUserSearched = false.obs;
   QuerySnapshot? _searchResultSnapshot;
 
-  CoreDatabaseService get databaseService => _coreDatabaseService;
+  DatabaseService get databaseService => _coreDatabaseService;
   TextEditingController get searchEditingController => _searchEditingController;
   bool get haveUserSearched => _haveUserSearched.value;
   QuerySnapshot? get searchResultSnapshot => _searchResultSnapshot;

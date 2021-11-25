@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vchat/core/service/abstracts/core_database_service.dart';
+import '../../service/abstracts/database_service.dart';
 import '../../utility/app_config.dart';
 import '../../core/utility/shared_preference_helper.dart';
 import '../../service/concretes/database_adapter.dart';
 
 class ChatListController extends GetxController {
   Stream<QuerySnapshot<Object?>>? _chatRooms;
-  late final CoreDatabaseService _databaseService;
+  late final DatabaseService _databaseService;
 
   Stream<QuerySnapshot<Object?>>? get chatRooms => _chatRooms;
 

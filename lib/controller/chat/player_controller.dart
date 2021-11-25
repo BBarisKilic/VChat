@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
-import 'package:vchat/service/abstracts/storage_service.dart';
+import '../../service/abstracts/storage_service.dart';
 import '../../service/concretes/storage_adapter.dart';
 
 class PlayerController extends GetxController {

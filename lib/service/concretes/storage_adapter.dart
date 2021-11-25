@@ -1,5 +1,5 @@
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:vchat/service/abstracts/storage_service.dart';
+import '../abstracts/storage_service.dart';
 
 class StorageAdapter implements StorageService {
   @override

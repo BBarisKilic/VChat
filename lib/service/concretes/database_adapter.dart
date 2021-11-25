@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../../core/service/abstracts/core_database_service.dart';
+import '../abstracts/database_service.dart';
 
-class DatabaseAdapter extends CoreDatabaseService {
+class DatabaseAdapter extends DatabaseService {
   @override
   Future<void> addNewUser(Map<String, dynamic> userData) async {
     FirebaseFirestore.instance

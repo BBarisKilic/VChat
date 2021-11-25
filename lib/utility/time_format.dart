@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-class TimeFormatter {
+class TimeFormat {
   static format({required Duration duration}) {
     String seconds =
         duration.inSeconds.remainder(60).toString().padLeft(2, '0');

@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 import '../constant/app_asset.dart';
 import '../constant/app_color.dart';
 import '../constant/app_hero_tag.dart';
-import '../utility/time_formatter.dart';
+import '../utility/time_format.dart';
 import '../view/chat/chat_view.dart';
 
 class ChatRoomsTile extends StatelessWidget {
@@ -92,7 +92,7 @@ class ChatRoomsTile extends StatelessWidget {
                 width: 1.w,
               ),
               Text(
-                TimeFormatter.format(
+                TimeFormat.format(
                     duration: Duration(
                         seconds:
                             int.tryParse(lastMessageDuration ?? '0') ?? 0)),
@@ -111,7 +111,7 @@ class ChatRoomsTile extends StatelessWidget {
 
   Text _buildSuffix() {
     return Text(
-      TimeFormatter.fromMilliSecondsToFormattedDate(
+      TimeFormat.fromMilliSecondsToFormattedDate(
           int.tryParse(lastMessageTime ?? '0') ?? 0),
       style: const TextStyle(
           color: AppColor.primaryTextColor,

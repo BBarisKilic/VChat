@@ -22,7 +22,7 @@ import 'core/core.dart';
 import 'core/view/authenticate/login/login_view.dart';
 import 'core/view/authenticate/register/register_view.dart';
 import 'core/view/welcome/welcome_view.dart';
-import 'utility/theme/app_theme.dart';
+import 'utility/app_theme.dart';
 import 'view/chat/chat_view.dart';
 import 'view/home/home_view.dart';
 import 'view/search/search_view.dart';

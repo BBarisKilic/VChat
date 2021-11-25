@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import '../constant/app_color.dart';
 import '../controller/chat/player_controller.dart';
-import '../utility/time_formatter.dart';
+import '../utility/time_format.dart';
 
 class MessageTile extends StatelessWidget {
   final PlayerController _playerController = Get.find();
@@ -144,7 +144,7 @@ class MessageTile extends StatelessWidget {
       child: Center(
         child: Obx(
           () => Text(
-            TimeFormatter.format(
+            TimeFormat.format(
                 duration: Duration(
                     seconds: _playerController.currentPosition[id] ?? 0)),
             textAlign: TextAlign.start,

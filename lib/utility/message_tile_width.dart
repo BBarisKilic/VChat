@@ -1,6 +1,6 @@
 import 'package:sizer/sizer.dart';
 
-class MessageTileWidthCalculator {
+class MessageTileWidth {
   static double calculate(Duration _soundDuration) {
     if (_soundDuration.inSeconds > 60) {
       return 70.w;

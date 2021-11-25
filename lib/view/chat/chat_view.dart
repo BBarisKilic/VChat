@@ -10,7 +10,7 @@ import '../../utility/app_config.dart';
 import '../../constant/app_hero_tag.dart';
 import '../../controller/chat/chat_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../utility/message_tile_width_calculator.dart';
+import '../../utility/message_tile_width.dart';
 
 part './extension/chat_extension.dart';
 

@@ -79,19 +79,21 @@ extension on ChatView {
                     reverse: true,
                     itemBuilder: (context, index) {
                       return MessageTile(
-                          id: index,
-                          chatRoomId: _chatController.chatRoomId!,
-                          duration:
-                              reversedData!.elementAt(index).get('duration'),
-                          sendBy: reversedData.elementAt(index).get('sendBy'),
-                          time: reversedData.elementAt(index).get('time'),
-                          sendByCurrentUser: AppConfig.currentUserName ==
-                              reversedData.elementAt(index).get('sendBy'),
-                          messageTileWidth:
-                              MessageTileWidthCalculator.calculate(Duration(
-                                  seconds: reversedData
-                                      .elementAt(index)
-                                      .get('duration'))));
+                        id: index,
+                        chatRoomId: _chatController.chatRoomId!,
+                        duration:
+                            reversedData!.elementAt(index).get('duration'),
+                        sendBy: reversedData.elementAt(index).get('sendBy'),
+                        time: reversedData.elementAt(index).get('time'),
+                        sendByCurrentUser: AppConfig.currentUserName ==
+                            reversedData.elementAt(index).get('sendBy'),
+                        messageTileWidth: MessageTileWidth.calculate(
+                          Duration(
+                            seconds:
+                                reversedData.elementAt(index).get('duration'),
+                          ),
+                        ),
+                      );
                     },
                   )
                 : Container();

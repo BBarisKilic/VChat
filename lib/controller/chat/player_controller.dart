@@ -1,14 +1,15 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:vchat/service/abstracts/audio_player_service.dart';
+import 'package:vchat/service/concretes/audio_player_adapter.dart';
 import '../../service/abstracts/storage_service.dart';
 import '../../service/concretes/storage_adapter.dart';
 
 class PlayerController extends GetxController {
   late final StorageService _storageService;
+  late final AudioPlayerService _audioPlayerService;
   final _isRecordPlaying = false.obs;
   final _currentPosition = <int, int>{}.obs;
-  late AudioPlayer _audioPlayer;
   Iterable<Reference>? _reference;
   String _loadedChatRoomId = '';
   String _loadedSendBy = '';
@@ -24,12 +25,13 @@ class PlayerController extends GetxController {
   @override
   void onInit() {
     _storageService = StorageAdapter();
-    _audioPlayer = AudioPlayer();
-    _audioPlayer.onPlayerCompletion.listen((event) async {
-      await _audioPlayer.seek(Duration.zero);
+    _audioPlayerService = AudioPlayerAdapter();
+    _audioPlayerService.getAudioPlayer.onPlayerCompletion.listen((event) async {
+      await _audioPlayerService.getAudioPlayer.seek(Duration.zero);
       _isRecordPlaying.value = false;
     });
-    _audioPlayer.onAudioPositionChanged.listen((Duration duration) {
+    _audioPlayerService.getAudioPlayer.onAudioPositionChanged
+        .listen((Duration duration) {
       if (_currentSecond != duration.inSeconds) {
         _currentSecond = duration.inSeconds;
         _currentPosition[currentId] = _currentSecond;
@@ -39,35 +41,35 @@ class PlayerController extends GetxController {
   }
 
   @override
-  void onClose() async {
-    await _audioPlayer.dispose();
+  void onClose() {
+    _audioPlayerService.dispose();
     super.onClose();
   }
 
-  void updateCurrentPosition(int _id, int _duration) {
-    _currentPosition[_id] = _duration;
+  void updateCurrentPosition(int id, int duration) {
+    _currentPosition[id] = duration;
   }
 
-  void onPressedPlayButton(int _id, String _chatRoomId, int _duration,
-      String _sendBy, int _time) async {
-    if (_loadedChatRoomId != _chatRoomId ||
-        _loadedSendBy != _sendBy ||
-        _loadedTime != _time) {
+  void onPressedPlayButton(
+      int id, String chatRoomId, int duration, String sendBy, int time) async {
+    if (_loadedChatRoomId != chatRoomId ||
+        _loadedSendBy != sendBy ||
+        _loadedTime != time) {
       _reference = null;
       await _pauseRecord();
-      await _audioPlayer.release();
+      await _audioPlayerService.release();
       if (currentId != -1) _currentPosition[_currentId] = _currentDuration;
     }
 
-    _currentId = _id;
-    _currentDuration = _duration;
+    _currentId = id;
+    _currentDuration = duration;
     _currentSecond = -1;
 
     if (isRecordPlaying) {
       await _pauseRecord();
     } else {
       if (_reference == null) {
-        await _loadRecord(_chatRoomId, _sendBy, _time);
+        await _loadRecord(chatRoomId, sendBy, time);
       } else {
         await _resumeRecord();
       }
@@ -90,17 +92,17 @@ class PlayerController extends GetxController {
 
   Future<void> _playRecord() async {
     _isRecordPlaying.value = true;
-    _audioPlayer.play(await _reference!.elementAt(0).getDownloadURL(),
-        isLocal: false);
+    await _audioPlayerService
+        .play(await _reference!.elementAt(0).getDownloadURL());
   }
 
   Future<void> _resumeRecord() async {
     _isRecordPlaying.value = true;
-    await _audioPlayer.resume();
+    await _audioPlayerService.resume();
   }
 
   Future<void> _pauseRecord() async {
     _isRecordPlaying.value = false;
-    await _audioPlayer.pause();
+    await _audioPlayerService.pause();
   }
 }

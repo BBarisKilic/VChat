@@ -100,8 +100,8 @@ class ChatController extends GetxController {
   void _createEffectList() {
     for (int i = 0; i < EffectData.data.length; i++) {
       _effects.add(Effect(
-          imagePath: EffectData.data[i]['image'],
-          name: EffectData.data[i]['name']));
+          imagePath: EffectData.data[i]['image']!,
+          name: EffectData.data[i]['name']!));
     }
   }
 

@@ -13,7 +13,7 @@ part './extension/welcome_extension.dart';
 class WelcomeView extends StatelessWidget {
   static const String id = '/welcome';
 
-  final WelcomeController _welcomeController = Get.find();
+  late final WelcomeController _welcomeController;
 
   final String appTitle;
   final String description;
@@ -50,7 +50,9 @@ class WelcomeView extends StatelessWidget {
       this.logoHeroAnimationTag = '',
       this.loginHeroAnimationTag = '',
       this.registerHeroAnimationTag = ''})
-      : super(key: key);
+      : super(key: key) {
+        _welcomeController = Get.find();
+      }
 
   @override
   Widget build(BuildContext context) {

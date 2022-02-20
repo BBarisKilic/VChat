@@ -42,13 +42,13 @@ class ChatController extends GetxController {
   final _currentState = 'Sending record...'.obs;
   String? _userName;
   String? _chatRoomId;
+  String? _effectCommand;
   Stream<QuerySnapshot>? _chats;
   FlutterAudioRecorder2? _audioRecorder;
   bool _isSuccessful = true;
   soundEffect _soundEffect = soundEffect.none;
   late String _filePath;
   late String _recordTime;
-  late String? _effectCommand;
   late PageController _pageController;
 
   List<Effect> get effects => _effects;
@@ -187,7 +187,7 @@ class ChatController extends GetxController {
       _soundEffect = soundEffect.none;
       _showBackButton.value = false;
       _showForwardButton.value = true;
-      _effectLabel.value = effects[0].name as String;
+      _effectLabel.value = effects[0].name;
       _isUploading.value = false;
     }
   }
@@ -277,7 +277,7 @@ class ChatController extends GetxController {
   }
 
   void onPageChanged(int i) {
-    _updateEffectLabel(effects[i].name as String);
+    _updateEffectLabel(effects[i].name);
 
     switch (i) {
       case 0:

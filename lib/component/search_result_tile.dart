@@ -7,16 +7,17 @@ import '../constant/app_hero_tag.dart';
 import '../controller/search/search_controller.dart';
 
 class SearchResultTile extends StatelessWidget {
+  late final SearchController _searchController;
   final String userName;
   final String userEmail;
-
-  final SearchController _searchController = Get.find();
 
   SearchResultTile({
     Key? key,
     required this.userName,
     required this.userEmail,
-  }) : super(key: key);
+  }) : super(key: key) {
+     _searchController = Get.find();
+  }
 
   @override
   Widget build(BuildContext context) {

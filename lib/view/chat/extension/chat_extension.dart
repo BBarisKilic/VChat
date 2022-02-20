@@ -195,7 +195,7 @@ extension on ChatView {
                     onTapCancel: () => _chatController.uploadSound(),
                     onTapUp: (_) => _chatController.uploadSound(),
                     child: Image.asset(
-                      _chatController.effects[i].imagePath as String,
+                      _chatController.effects[i].imagePath,
                       fit: BoxFit.cover,
                       height: 10.h,
                       width: 10.h,

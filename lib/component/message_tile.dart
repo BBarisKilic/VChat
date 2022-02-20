@@ -6,8 +6,7 @@ import '../controller/chat/player_controller.dart';
 import '../utility/time_format.dart';
 
 class MessageTile extends StatelessWidget {
-  final PlayerController _playerController = Get.find();
-
+  late final PlayerController _playerController;
   final int id;
   final String chatRoomId;
   final int duration;
@@ -26,6 +25,7 @@ class MessageTile extends StatelessWidget {
       required this.sendByCurrentUser,
       required this.messageTileWidth})
       : super(key: key) {
+    _playerController = Get.find();
     _playerController.updateCurrentPosition(id, duration);
   }
 
